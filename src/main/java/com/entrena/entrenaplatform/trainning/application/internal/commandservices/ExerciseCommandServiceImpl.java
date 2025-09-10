@@ -2,6 +2,7 @@ package com.entrena.entrenaplatform.trainning.application.internal.commandservic
 
 import com.entrena.entrenaplatform.trainning.domain.model.aggregates.Exercise;
 import com.entrena.entrenaplatform.trainning.domain.model.commands.CreateExerciseCommand;
+import com.entrena.entrenaplatform.trainning.domain.model.commands.DeleteExerciseCommand;
 import com.entrena.entrenaplatform.trainning.domain.services.ExerciseCommandService;
 import com.entrena.entrenaplatform.trainning.infrastructure.persistence.jpa.repositories.ExerciseRepository;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,15 @@ public class ExerciseCommandServiceImpl implements ExerciseCommandService {
             throw new RuntimeException("Error saving exercise: " + e.getMessage(), e);
         }
         return exercise.getId();
+    }
+
+    @Override
+    public void handle(DeleteExerciseCommand command) {
+        //TODO: Add verification (if the exercise exists then delete
+        try{
+           exerciseRepository.deleteById(command.exerciseId());
+        }catch (Exception e){
+            throw new RuntimeException("Error deleting the exercise: " + e.getMessage(), e);
+        }
     }
 }

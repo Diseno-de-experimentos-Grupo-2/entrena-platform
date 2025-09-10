@@ -1,6 +1,7 @@
 package com.entrena.entrenaplatform.trainning.interfaces.rest;
 
 import com.entrena.entrenaplatform.trainning.domain.model.aggregates.Exercise;
+import com.entrena.entrenaplatform.trainning.domain.model.commands.DeleteExerciseCommand;
 import com.entrena.entrenaplatform.trainning.domain.model.queries.GetAllExercisesQuery;
 import com.entrena.entrenaplatform.trainning.domain.model.queries.GetExerciseByIdQuery;
 import com.entrena.entrenaplatform.trainning.domain.services.ExerciseCommandService;
@@ -54,6 +55,15 @@ public class ExerciseController {
         var exerciseResource = ExerciseResourceFromEntityAssembler.toResourceFromEntity(exerciseEntity);
         return ResponseEntity.ok(exerciseResource);
     }
+
+
+    public ResponseEntity<?> deleteExercise(@PathVariable Long exerciseId){
+        var deleteExerciseCommand = new DeleteExerciseCommand(exerciseId);
+        exerciseCommandService.handle(deleteExerciseCommand);
+        return ResponseEntity.ok("Exercise with given id successfully deleted");
+    }
+
+
 
 
 
