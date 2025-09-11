@@ -5,5 +5,9 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public record ClientId(Long clientId) {
 
-    //TODO: add validations
+    public ClientId {
+        if (clientId == null || clientId <= 0) {
+            throw new IllegalArgumentException("Client ID must be positive");
+        }
+    }
 }

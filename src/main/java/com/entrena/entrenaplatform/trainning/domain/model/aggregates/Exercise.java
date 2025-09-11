@@ -39,5 +39,8 @@ public class Exercise {
     public Exercise() {
     }
 
+    //todo: add update method with command
+    public void updateExercise(){}
+
 
 }
