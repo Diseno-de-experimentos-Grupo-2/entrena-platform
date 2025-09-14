@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Getter
 @Entity
+@Table(name = "routines")
 public class Routine {
 
     @Id
@@ -31,6 +32,7 @@ public class Routine {
 
     @Embedded
     @Setter
+
     private ClientId clientId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

@@ -11,6 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Entity
+@Table(name = "routine_items")
 public class RoutineItem {
 
     @Id
