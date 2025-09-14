@@ -1,12 +1,11 @@
 package com.entrena.entrenaplatform.trainning.domain.model.entities;
 
+
 import com.entrena.entrenaplatform.trainning.domain.model.valueobjects.ExerciseId;
 import com.entrena.entrenaplatform.trainning.domain.model.valueobjects.Reps;
 import com.entrena.entrenaplatform.trainning.domain.model.valueobjects.RestTime;
 import com.entrena.entrenaplatform.trainning.domain.model.valueobjects.Sets;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +14,7 @@ import lombok.Setter;
 public class RoutineItem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Embedded
@@ -34,6 +34,7 @@ public class RoutineItem {
     private RestTime restTime;
 
     @Setter
+    @Column(name = "order_index")
     private Integer orderIndex;
 
     public RoutineItem(ExerciseId exerciseId, Sets sets, Reps reps, RestTime restTime, Integer orderIndex) {
@@ -45,11 +46,15 @@ public class RoutineItem {
     }
 
     public RoutineItem() {
+
     }
 
+
     public void updateExerciseDetails(Sets sets, Reps reps, RestTime restTime) {
-        this.sets = sets;
-        this.reps = reps;
-        this.restTime = restTime;
+        if (sets != null) this.sets = sets;
+        if (reps != null) this.reps = reps;
+        if (restTime != null) this.restTime = restTime;
     }
+
+
 }
