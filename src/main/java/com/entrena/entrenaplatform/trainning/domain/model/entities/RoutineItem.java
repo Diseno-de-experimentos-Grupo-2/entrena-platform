@@ -24,14 +24,26 @@ public class RoutineItem {
 
     @Embedded
     @Setter
+    @AttributeOverride(
+            name = "value",
+            column = @Column(name = "sets")
+    )
     private Sets sets;
 
     @Embedded
     @Setter
+    @AttributeOverride(
+            name = "reps",
+            column = @Column(name = "reps")
+    )
     private Reps reps;
 
     @Embedded
     @Setter
+    @AttributeOverride(
+            name = "seconds",
+            column = @Column(name = "rest_time_seconds")
+    )
     private RestTime restTime;
 
     @Setter
