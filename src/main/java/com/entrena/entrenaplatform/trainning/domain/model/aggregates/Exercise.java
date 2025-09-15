@@ -2,10 +2,7 @@ package com.entrena.entrenaplatform.trainning.domain.model.aggregates;
 
 import com.entrena.entrenaplatform.trainning.domain.model.commands.CreateExerciseCommand;
 import com.entrena.entrenaplatform.trainning.domain.model.commands.UpdateExerciseCommand;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +12,7 @@ import lombok.Setter;
 public class Exercise {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter

@@ -19,6 +19,7 @@ import java.util.List;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/v1/routines", produces = APPLICATION_JSON_VALUE)
 public class RoutineController {
 

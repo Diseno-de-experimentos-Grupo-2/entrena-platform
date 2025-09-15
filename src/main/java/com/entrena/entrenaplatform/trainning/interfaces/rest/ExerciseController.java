@@ -23,6 +23,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = "/api/v1/exercises", produces = APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "http://localhost:4200")
 //TODO: add tags and endpoint documentation
 public class ExerciseController {
 
